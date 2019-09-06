@@ -6,7 +6,9 @@
 /public/bundles/
 /var/
 /vendor/
-/.idea/
+.idea
+.idea/php.xml
+.idea/workspace.xml
 
 ###< symfony/framework-bundle ###
 
