@@ -29,6 +29,7 @@ class AdminController extends AbstractController {
   public function initialize() {
     $this->dataManager->loadWeeks();
     $this->dataManager->loadNflTeams();
+    $this->dataManager->loadNflSchedule();
   //  $this->dataManager->loadPlayers();
     return new Response("Player Data Loaded");
   }

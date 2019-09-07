@@ -9,4 +9,6 @@ interface DataManagerInterface {
   public function loadWeeks();
 
   public function loadNflTeams();
+
+  public function loadNflSchedule();
 }

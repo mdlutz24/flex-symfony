@@ -161,14 +161,23 @@ class MflConnector implements MflConnectorInterface {
     return FALSE;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function export($type, array $args = []) {
     return $this->makeCall('export', $args + [static::TYPE => $type])->{$type};
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function import($type, array $args = []) {
     return $this->makeCall('import', $args + [static::TYPE => $type]);
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getPlayers($since = 0, array $players = [], bool $details = FALSE) {
     $args = [];
     if ($since) {
@@ -181,6 +190,14 @@ class MflConnector implements MflConnectorInterface {
       $args[static::DETAILS] = '1';
     }
     return $this->export('players', $args);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getNflSchedule($week = 'ALL') {
+    $args[static::WEEK] = $week;
+    return $this->export('nflSchedule', $args);
   }
 
   /**

@@ -14,11 +14,26 @@ use Doctrine\Common\Persistence\ManagerRegistry;
  */
 class NflTeamRepository extends ServiceEntityRepository
 {
+  protected $teamList;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, NflTeam::class);
     }
 
+  /**
+   * @return NflTeam[]
+   */
+    public function getAllById() {
+      if (empty($this->teamList)) {
+        $this->teamList = [];
+        $teams = $this->findAll();
+        foreach($teams as $team) {
+          $this->teamList[$team->getShortName()] = $team;
+        }
+      }
+      return $this->teamList;
+    }
     // /**
     //  * @return NflTeam[] Returns an array of NflTeam objects
     //  */
